@@ -301,6 +301,7 @@ img { display: block; max-width: 100%; }
   font: 400 clamp(2.2rem, 1.6rem + 2.6vw, 3.5rem)/1 var(--font-display);
   text-transform: uppercase;
 }
+.section__title--small { font-size: clamp(1.7rem, 1.4rem + 1.4vw, 2.4rem); }
 .section__intro {
   max-width: 38rem;
   margin: 0.75rem 0 0;
@@ -308,7 +309,9 @@ img { display: block; max-width: 100%; }
 }
 .section__intro a,
 .set__caption a,
-.events__empty a {
+.events__empty a,
+.facts a,
+.footer a {
   color: var(--white);
   text-decoration: underline 3px var(--orange);
   text-underline-offset: 0.3em;
@@ -512,6 +515,47 @@ img { display: block; max-width: 100%; }
 }
 .contact__social { justify-content: flex-start; margin-top: 1.5rem; }
 
+/* ---------- Press kit ---------- */
+
+.facts {
+  max-width: 48rem;
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  border-bottom: 2px solid rgb(255 255 255 / 0.16);
+}
+.facts div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 2px solid rgb(255 255 255 / 0.16);
+}
+.facts dt { color: var(--yellow); font-weight: 700; }
+.facts dd { margin: 0; overflow-wrap: anywhere; }
+
+.kit {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 2.25rem 1.5rem;
+  margin: clamp(1.75rem, 4vw, 2.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.kit__item { min-width: 0; }
+.kit__preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 0.08);
+}
+.kit__title {
+  margin: 0.9rem 0 0;
+  font: 400 1.3rem/1.1 var(--font-display);
+  text-transform: uppercase;
+}
+.kit__meta { margin: 0.3rem 0 0.8rem; color: rgb(255 255 255 / 0.72); font-size: 1.05rem; }
+
 /* ---------- Footer ---------- */
 
 .footer {
@@ -522,6 +566,8 @@ img { display: block; max-width: 100%; }
   text-align: center;
 }
 .footer p { margin: 0; }
+.footer p + p { margin-top: 0.75rem; }
+.footer a { font-weight: 700; }
 
 /* ---------- Motion ----------
    One entrance on load. After that nothing moves unless you poke the mascot,

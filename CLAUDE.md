@@ -52,9 +52,9 @@ window.PI = {
 2. Done: Music section plus `js/data.js` and `js/main.js`
 3. Done: Sets (latest YouTube session, click-to-load) and Events
 4. Done: About and Contact (booking email: primalimpulse@gmail.com)
-5. `press.html` (press kit shell; content comes later)
+5. Done: `press.html` (bio, photos and logos from `assets/press/`; tech rider and longer bios still to come)
 6. Deploy: GitHub Pages, custom domain (`CNAME`), analytics (GoatCounter, one script tag), Open Graph image, `404.html`, Lighthouse pass
 
 ## Still missing (ask, do not guess)
 - Original "Artist - Song" for each remix (cards show a plain "Remix" tag until then)
-- Download URLs, press kit content (bios, photos, tech rider), domain name
+- Download URLs, press kit content (longer bios, tech rider), domain name
