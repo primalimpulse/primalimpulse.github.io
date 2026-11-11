@@ -12,9 +12,10 @@ Then open http://localhost:8000
 
     index.html            the page
     css/style.css         all styles; colour and font tokens are at the top
-    js/data.js            tracks and events; edit this to update the site
+    js/data.js            tracks, featured set and events; edit this to update the site
     js/main.js            renders js/data.js into the page
     assets/covers/        track covers (square WebP, about 600px)
+    assets/sets/          poster for the featured set (16:9 WebP)
     assets/mascot.svg     the mascot, vectorised and coloured from Icon_Transparent.png
     assets/discoball.svg  the cracked disco ball
     assets/fonts/         self-hosted fonts (SIL Open Font License, texts included)

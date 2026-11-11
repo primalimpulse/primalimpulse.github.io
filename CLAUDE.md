@@ -32,6 +32,7 @@ window.PI = {
       cover: "assets/covers/x.webp",
       spotify: "", soundcloud: "", download: "" },
   ],
+  set: { title: "", youtube: "VIDEO_ID", poster: "assets/sets/x.webp" },   // the one featured set
   events: [
     { date: "2026-12-04", name: null },       // null name renders as a secret/classified row
   ],
@@ -40,19 +41,20 @@ window.PI = {
 
 - Track card: square cover, title, Original or "Remix of X" tag, a button for each listen link that exists, Download button hidden while `download` is empty.
 - Covers: WebP, about 600px square, lazy-loaded, in `assets/covers/`.
+- Set: one featured YouTube video. Poster is a self-hosted 16:9 WebP in `assets/sets/`; the youtube-nocookie iframe is only created when play is pressed.
 - Events: ISO dates. "Today" is computed in Europe/Madrid. An event stays upcoming through its whole day, then moves to "Past shows" automatically. Upcoming sorted ascending, past descending. Empty upcoming list shows a prompt to book us. No ticket links.
 - Downloads are GitHub Release assets in a separate repo. The site only stores URLs.
 - A `<noscript>` fallback points to the social links.
 
 ## Steps (one at a time, stop for approval after each)
 1. Done: sticky nav, poster-style hero, footer.
-2. Music section plus `js/data.js` and `js/main.js`
-3. Sets (latest YouTube session, click-to-load) and Events
+2. Done: Music section plus `js/data.js` and `js/main.js`
+3. Done: Sets (latest YouTube session, click-to-load) and Events
 4. About and Contact
 5. `press.html` (press kit shell; content comes later)
 6. Deploy: GitHub Pages, custom domain (`CNAME`), analytics (GoatCounter, one script tag), Open Graph image, `404.html`, Lighthouse pass
 
 ## Still missing (ask, do not guess)
 - Booking email
-- Which YouTube set to feature
+- Original "Artist - Song" for each remix (cards show a plain "Remix" tag until then)
 - Download URLs, press kit content (bios, photos, tech rider), domain name

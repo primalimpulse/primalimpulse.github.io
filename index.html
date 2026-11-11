@@ -71,7 +71,42 @@
       </noscript>
     </section>
 
-    <!-- Step 3: #sets, #events   Step 4: #about, #contact -->
+    <section class="section" id="sets" aria-labelledby="sets-title">
+      <h2 class="section__title" id="sets-title">Sets</h2>
+      <p class="section__intro">Our latest session.</p>
+      <div class="set" id="set-player"></div>
+      <p class="set__caption">
+        <span id="set-title"></span>
+        <a href="https://www.youtube.com/@PRIMALIMPULSEDJ" target="_blank" rel="noopener">More sets on YouTube</a>
+      </p>
+      <noscript>
+        <p class="section__intro">
+          The player needs JavaScript. Watch the sets on
+          <a href="https://www.youtube.com/@PRIMALIMPULSEDJ">YouTube</a>.
+        </p>
+      </noscript>
+    </section>
+
+    <section class="section" id="events" aria-labelledby="events-title">
+      <h2 class="section__title" id="events-title">Events</h2>
+      <p class="section__intro">Where to find us next.</p>
+      <ol class="events" id="events-upcoming"></ol>
+      <p class="events__empty" id="events-empty" hidden>
+        Nothing on the calendar right now. You could fix that: <a href="#contact">book us</a>.
+      </p>
+      <div id="events-past-wrap" hidden>
+        <h3 class="events__past-title">Past shows</h3>
+        <ol class="events events--past" id="events-past"></ol>
+      </div>
+      <noscript>
+        <p class="section__intro">
+          The show list needs JavaScript. Dates are also announced on
+          <a href="https://www.instagram.com/primalimpulsedj">Instagram</a>.
+        </p>
+      </noscript>
+    </section>
+
+    <!-- Step 4: #about, #contact -->
 
   </main>
 

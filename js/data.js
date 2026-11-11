@@ -10,8 +10,13 @@
      soundcloud  link, or "" to hide the button
      download    link to the free download, or "" to hide the button
 
+   Set (the one featured DJ set)
+     title       shown under the player
+     youtube     the video ID: the part after youtu.be/ or after watch?v=
+     poster      16:9 WebP in assets/sets/, shown until the visitor presses play
+
    Events
-     date        "YYYY-MM-DD"
+     date       "YYYY-MM-DD"
      name        event name, or null for a show that cannot be announced yet
    Past events move to "Past shows" on their own the day after. */
 
@@ -63,6 +68,12 @@ window.PI = {
       download: "",
     },
   ],
+
+  set: {
+    title: "Fruit Madnes LIVE | D9 Barcelona 2026",
+    youtube: "dnShkwFV5jA",
+    poster: "assets/sets/fruit-madness-d9.webp",
+  },
 
   events: [
     { date: "2026-12-04", name: null },
