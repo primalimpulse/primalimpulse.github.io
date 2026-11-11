@@ -17,6 +17,8 @@ Read `index.html`, `css/style.css` and `README.md` before changing anything. The
 - Accessibility floor: visible keyboard focus, real alt text, `prefers-reduced-motion` respected, works at 375px wide.
 - Motion: one entrance on load, plus the mascot headbang on hover (`--beat: 0.4s`, 150 BPM). No scroll-reveal animations.
 - Design principle: a clean dark stage where the fruit misbehaves. The hero is the one chaos moment; other sections stay quiet and disciplined. No uppercase eyebrow labels, no monospace data labels, no arrows on buttons.
+- Cache busting: `css/style.css`, `js/data.js` and `js/main.js` are linked with `?v=N`. Bump N in all three HTML files whenever one of them changes, or returning visitors can get new HTML with an old cached file.
+- Safari: SVG files used in `<img>` must keep `width` and `height` on the root element, and never size a child with `height: 100%` inside an `aspect-ratio` box.
 - Commits: Conventional Commits. Do not push without asking.
 - Verify every change at 375px, 820px and 1440px wide before calling it done.
 - Be direct: if a request is a bad idea, say so and why.
