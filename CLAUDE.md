@@ -1,7 +1,7 @@
 # Primal Impulse website
 
 ## Project
-Primal Impulse is a Barcelona hardstyle/hardcore/uptempo/rawstyle duo: Joan Gracia (the pineapple) and Dario Marinello (the banana). Tone: absurd, comedic rave parody. They take the music seriously, not themselves. The site is a hub for music, free downloads, DJ sets, events, bookings and social links. English only.
+Primal Impulse is a Barcelona duo playing rawstyle, uptempo, hardstyle and hardcore (always name all four styles, in that order): Joan Gracia (the pineapple) and Dario Marinello (the banana). Tone: absurd, comedic rave parody. They take the music seriously, not themselves. The site is a hub for music, free downloads, DJ sets, events, bookings and social links. English only.
 
 Read `index.html`, `css/style.css` and `README.md` before changing anything. The repo is the source of truth.
 
@@ -50,11 +50,10 @@ window.PI = {
 1. Done: sticky nav, poster-style hero, footer.
 2. Done: Music section plus `js/data.js` and `js/main.js`
 3. Done: Sets (latest YouTube session, click-to-load) and Events
-4. About and Contact
+4. Done: About and Contact (booking email: primalimpulse@gmail.com)
 5. `press.html` (press kit shell; content comes later)
 6. Deploy: GitHub Pages, custom domain (`CNAME`), analytics (GoatCounter, one script tag), Open Graph image, `404.html`, Lighthouse pass
 
 ## Still missing (ask, do not guess)
-- Booking email
 - Original "Artist - Song" for each remix (cards show a plain "Remix" tag until then)
 - Download URLs, press kit content (bios, photos, tech rider), domain name

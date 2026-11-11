@@ -223,7 +223,8 @@ img { display: block; max-width: 100%; }
   margin-top: 1.5rem;
 }
 
-.hero__social {
+.hero__social,
+.contact__social {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -234,12 +235,16 @@ img { display: block; max-width: 100%; }
   font-size: 1.125rem;
   font-weight: 700;
 }
-.hero__social a {
+.hero__social a,
+.contact__social a,
+.contact__email a {
   color: var(--white);
   text-decoration: underline 3px var(--orange);
   text-underline-offset: 0.3em;
 }
-.hero__social a:hover { color: var(--yellow); }
+.hero__social a:hover,
+.contact__social a:hover,
+.contact__email a:hover { color: var(--yellow); }
 
 /* ---------- Buttons ---------- */
 
@@ -466,6 +471,38 @@ img { display: block; max-width: 100%; }
   .event__date { flex-direction: column; gap: 0.15rem; }
   .event__month { font-size: 1rem; }
 }
+
+/* ---------- About ---------- */
+
+.about__text { color: var(--white); }
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem clamp(2rem, 6vw, 4rem);
+  margin: clamp(1.75rem, 4vw, 2.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.member { padding-left: 1rem; border-left: 4px solid var(--orange); }
+.member--banana { border-left-color: var(--yellow); }
+.member__name {
+  display: block;
+  font: 400 1.3rem/1.15 var(--font-display);
+  text-transform: uppercase;
+}
+.member__role { display: block; margin-top: 0.25rem; color: var(--orange); font-weight: 700; }
+.member--banana .member__role { color: var(--yellow); }
+
+/* ---------- Contact ---------- */
+
+.contact__email {
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  font-size: clamp(1.35rem, 1rem + 2vw, 2.25rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.contact__social { justify-content: flex-start; margin-top: 1.5rem; }
 
 /* ---------- Footer ---------- */
 
