@@ -10,7 +10,7 @@ Read `index.html`, `css/style.css` and `README.md` before changing anything. The
 - Colours: only #000000, #ffffff, #ff6e00, #01b308, #ffe135. Tints via alpha only. Tokens are at the top of `css/style.css`.
 - Fonts: Bowlby One (titles), Barlow Semi Condensed 500/700 (everything else), self-hosted in `assets/fonts/`. No other fonts, no font CDNs.
 - No third-party requests on page load, with one agreed exception: the GoatCounter script (`gc.zgo.at/count.js`, site `primal-impulse.goatcounter.com`, cookieless) at the end of every page. YouTube/Spotify/SoundCloud embeds are click-to-load. No cookie banner should ever be needed.
-- No platform brand logos (Spotify, Instagram, etc.). Text links only.
+- Brand logos: only on the track cards, where the Spotify and SoundCloud listen links are square icon buttons using each brand's official single-colour mark in white, unaltered (inlined in `js/main.js`). Everywhere else, text links only.
 - `assets/mascot.svg` is the official mascot. Do not redraw or recolour it without asking.
 - Only list tracks and events the band has supplied. Never invent tracks, credits, dates, venues or links. Ask when something is missing.
 - Never use the em dash character (U+2014) in code, copy, comments or commit messages.
@@ -42,7 +42,7 @@ window.PI = {
 };
 ```
 
-- Track card: square cover, title, Original or "Remix of X" tag, a button for each listen link that exists, Download button hidden while `download` is empty.
+- Track card: square cover, title, Original or "Remix of X" tag, a square icon button for each listen link that exists, Download button hidden while `download` is empty.
 - Covers: WebP, about 600px square, lazy-loaded, in `assets/covers/`.
 - Set: one featured YouTube video. Poster is a self-hosted 16:9 WebP in `assets/sets/`; the youtube-nocookie iframe is only created when play is pressed.
 - Events: ISO dates. "Today" is computed in Europe/Madrid. An event stays upcoming through its whole day, then moves to "Past shows" automatically. Upcoming sorted ascending, past descending. Empty upcoming list shows a prompt to book us. No ticket links.

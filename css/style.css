@@ -286,6 +286,8 @@ img { display: block; max-width: 100%; }
 .btn--small:hover { transform: none; border-color: var(--orange); box-shadow: none; }
 .btn--small:active { transform: none; box-shadow: none; }
 .btn--small.btn--primary { border-color: var(--orange); }
+.btn--icon { width: 2.75rem; padding: 0; }
+.btn--icon svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
 .btn--small.btn--primary:hover { border-color: var(--yellow); background: var(--yellow); }
 
 /* ---------- Sections ---------- */
