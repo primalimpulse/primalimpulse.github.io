@@ -12,6 +12,7 @@ Then open http://localhost:8000
 
     index.html            the page
     press.html            press kit: bio, photos, logos
+    404.html              not-found page (GitHub Pages serves it automatically)
     css/style.css         all styles; colour and font tokens are at the top
     js/data.js            tracks, featured set and events; edit this to update the site
     js/main.js            renders js/data.js into the page
@@ -20,7 +21,13 @@ Then open http://localhost:8000
     assets/sets/          poster for the featured set (16:9 WebP)
     assets/mascot.svg     the mascot, vectorised and coloured from Icon_Transparent.png
     assets/discoball.svg  the cracked disco ball
+    assets/og.jpg         1200x630 image shown when the site is shared
     assets/fonts/         self-hosted fonts (SIL Open Font License, texts included)
+
+## Deploy
+
+GitHub Pages serves the `main` branch at https://sklyvan.github.io/primal-impulse/.
+Pushing to `main` publishes the site.
 
 ## Rules
 

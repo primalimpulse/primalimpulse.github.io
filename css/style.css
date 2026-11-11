@@ -556,6 +556,22 @@ img { display: block; max-width: 100%; }
 }
 .kit__meta { margin: 0.3rem 0 0.8rem; color: rgb(255 255 255 / 0.72); font-size: 1.05rem; }
 
+/* ---------- 404 ---------- */
+
+.lost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100svh - var(--nav-h) - var(--safe-top) - 6rem);
+  padding: 3rem var(--gutter);
+  text-align: center;
+}
+.lost__mascot { height: clamp(10rem, 30svh, 16rem); width: auto; margin-bottom: 1.5rem; transform: rotate(180deg); }
+.lost .section__title { font-size: clamp(4rem, 3rem + 6vw, 7rem); color: var(--yellow); }
+.lost p { margin-bottom: 0; }
+.lost p + p { margin-top: 2rem; }
+
 /* ---------- Footer ---------- */
 
 .footer {
