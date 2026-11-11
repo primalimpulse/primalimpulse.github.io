@@ -35,6 +35,7 @@ window.PI = {
   set: { title: "", youtube: "VIDEO_ID", poster: "assets/sets/x.webp" },   // the one featured set
   events: [
     { date: "2026-12-04", name: null },       // null name renders as a secret/classified row
+    { date: "", name: "", venue: "", map: "" }, // venue and map link are optional
   ],
 };
 ```

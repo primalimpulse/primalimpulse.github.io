@@ -450,6 +450,14 @@ img { display: block; max-width: 100%; }
   background: var(--white);
 }
 .event__note { margin: 0.25rem 0 0; color: rgb(255 255 255 / 0.72); font-size: 1.05rem; }
+.event__note a {
+  display: inline-block;
+  padding: 0.3rem 0;
+  color: var(--white);
+  text-decoration: underline 2px var(--orange);
+  text-underline-offset: 0.3em;
+}
+.event__note a:hover { color: var(--yellow); }
 
 .events__empty { max-width: 38rem; margin: clamp(1.75rem, 4vw, 2.75rem) 0 0; }
 

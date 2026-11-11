@@ -134,6 +134,20 @@
     var info = el("div", "event__info");
     if (event.name) {
       info.appendChild(el("p", "event__name", event.name));
+      if (event.venue) {
+        var venue = el("p", "event__note");
+        if (event.map) {
+          var map = el("a", null, event.venue);
+          map.href = event.map;
+          map.target = "_blank";
+          map.rel = "noopener";
+          map.setAttribute("aria-label", event.venue + ", open in maps");
+          venue.appendChild(map);
+        } else {
+          venue.textContent = event.venue;
+        }
+        info.appendChild(venue);
+      }
     } else {
       var name = el("p", "event__name event__name--secret");
       var bar = el("span", "event__redacted");

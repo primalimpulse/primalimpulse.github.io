@@ -18,6 +18,8 @@
    Events
      date       "YYYY-MM-DD"
      name        event name, or null for a show that cannot be announced yet
+     venue       optional: venue name and city, shown under the event name
+     map         optional: map link for the venue; turns the venue into a link
    Past events move to "Past shows" on their own the day after. */
 
 window.PI = {
@@ -77,7 +79,12 @@ window.PI = {
 
   events: [
     { date: "2026-12-04", name: null },
-    { date: "2027-01-05", name: "Hardstyle Takeover" },
+    {
+      date: "2027-01-05",
+      name: "Hardstyle Takeover",
+      venue: "9D9, Barcelona, Spain",
+      map: "https://maps.app.goo.gl/LgERadMEQQeJFj8o6",
+    },
     { date: "2027-01-09", name: null },
   ],
 };
