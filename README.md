@@ -26,7 +26,7 @@ Then open http://localhost:8000
 
 ## Deploy
 
-GitHub Pages serves the `main` branch at https://sklyvan.github.io/primal-impulse/.
+GitHub Pages serves the `main` branch at https://primalimpulse.github.io/.
 Pushing to `main` publishes the site.
 
 ## Rules
