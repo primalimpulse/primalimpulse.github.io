@@ -72,7 +72,7 @@ window.PI = {
   ],
 
   set: {
-    title: "Fruit Madnes LIVE | D9 Barcelona 2026",
+    title: "Fruit Madness LIVE | D9 Barcelona 2026",
     youtube: "dnShkwFV5jA",
     poster: "assets/sets/fruit-madness-d9.webp",
   },
