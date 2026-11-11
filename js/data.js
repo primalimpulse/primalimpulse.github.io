@@ -40,7 +40,7 @@ window.PI = {
       cover: "assets/covers/imperial-march.webp",
       spotify: "https://open.spotify.com/track/13xb5fk5J5y9AnwUgEbiAH",
       soundcloud: "https://soundcloud.com/primalimpulsedj/imperial_march",
-      download: "",
+      download: "https://github.com/primalimpulse/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-Imperial-March-Extended-Mix.flac",
     },
     {
       title: "Bad Guy",
@@ -49,7 +49,7 @@ window.PI = {
       cover: "assets/covers/bad-guy.webp",
       spotify: "https://open.spotify.com/track/7xqiJafoGskmfTovEdlBEy",
       soundcloud: "https://soundcloud.com/primalimpulsedj/bad_guy",
-      download: "",
+      download: "https://github.com/primalimpulse/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-Bad-Guy-Extended-Mix.flac",
     },
     {
       title: "Zaag This Party",

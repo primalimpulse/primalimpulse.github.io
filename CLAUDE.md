@@ -53,10 +53,10 @@ window.PI = {
 1. Done: sticky nav, poster-style hero, footer.
 2. Done: Music section plus `js/data.js` and `js/main.js`
 3. Done: Sets (latest YouTube session, click-to-load) and Events
-4. Done: About and Contact (booking email: primalimpulse@gmail.com)
+4. Done: About and Contact (booking email: primalimpulsedj@gmail.com)
 5. Done: `press.html` (bio, photos and logos from `assets/press/`; tech rider and longer bios still to come)
 6. Done: GoatCounter, Open Graph tags and `assets/og.jpg`, `404.html`, Lighthouse pass. The site lives in the repo `primalimpulse/primalimpulse.github.io` and GitHub Pages serves `main` at https://primalimpulse.github.io/, so pushing is the deploy. If a custom domain is added later: add `CNAME` and update the canonical and `og:` URLs in `index.html` and `press.html`.
 
 ## Still missing (ask, do not guess)
 - Original "Artist - Song" for each remix (cards show a plain "Remix" tag until then)
-- Download files for APTerror, Imperial March and Bad Guy; press kit content (longer bios, tech rider); domain name
+- Download file for APTerror; press kit content (longer bios, tech rider); domain name
