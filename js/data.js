@@ -58,7 +58,7 @@ window.PI = {
       cover: "assets/covers/zaag-this-party.webp",
       spotify: "",
       soundcloud: "https://soundcloud.com/primalimpulsedj/zaagthisparty",
-      download: "",
+      download: "https://github.com/Sklyvan/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-Zaag-This-Party-Extended-Mix.flac",
     },
     {
       title: "TOTO DE LOCA",
@@ -67,7 +67,7 @@ window.PI = {
       cover: "assets/covers/toto-de-loca.webp",
       spotify: "",
       soundcloud: "https://soundcloud.com/primalimpulsedj/toto_de_loca",
-      download: "",
+      download: "https://github.com/Sklyvan/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-TOTO-DE-LOCA-Uptempo-Remix-Extended-Mix.flac",
     },
   ],
 

@@ -15,8 +15,10 @@
   function linkButton(label, href, accessibleName, extraClass) {
     var a = el("a", "btn btn--small" + (extraClass ? " " + extraClass : ""), label);
     a.href = href;
-    a.target = "_blank";
-    a.rel = "noopener";
+    if (!extraClass) {
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
     a.setAttribute("aria-label", accessibleName);
     return a;
   }
