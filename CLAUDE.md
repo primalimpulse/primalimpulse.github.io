@@ -46,7 +46,7 @@ window.PI = {
 - Covers: WebP, about 600px square, lazy-loaded, in `assets/covers/`.
 - Set: one featured YouTube video. Poster is a self-hosted 16:9 WebP in `assets/sets/`; the youtube-nocookie iframe is only created when play is pressed.
 - Events: ISO dates. "Today" is computed in Europe/Madrid. An event stays upcoming through its whole day, then moves to "Past shows" automatically. Upcoming sorted ascending, past descending. Empty upcoming list shows a prompt to book us. No ticket links.
-- Downloads are GitHub Release assets in `Sklyvan/primal-impulse-downloads` (release tag `tracks`, files named `Primal-Impulse-Title-Mix.flac`). The site only stores URLs. To add one: `gh release upload tracks FILE --repo Sklyvan/primal-impulse-downloads`, then set `download` in `js/data.js`.
+- Downloads are GitHub Release assets in `primalimpulse/primal-impulse-downloads` (release tag `tracks`, files named `Primal-Impulse-Title-Mix.flac`). The site only stores URLs. To add one: `gh release upload tracks FILE --repo primalimpulse/primal-impulse-downloads`, then set `download` in `js/data.js`.
 - A `<noscript>` fallback points to the social links.
 
 ## Steps (one at a time, stop for approval after each)
