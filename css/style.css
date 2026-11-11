@@ -227,7 +227,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem clamp(1.1rem, 4vw, 1.75rem);
+  gap: 0.6rem;
   margin: 1.9rem 0 0;
   padding: 0;
   list-style: none;
@@ -235,7 +235,7 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
 }
 .hero__social a,
-.contact__social a,
+.contact__social a { color: var(--white); text-decoration: none; }
 .contact__email a {
   color: var(--white);
   text-decoration: underline 3px var(--orange);

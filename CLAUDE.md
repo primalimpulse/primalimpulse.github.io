@@ -10,7 +10,7 @@ Read `index.html`, `css/style.css` and `README.md` before changing anything. The
 - Colours: only #000000, #ffffff, #ff6e00, #01b308, #ffe135. Tints via alpha only. Tokens are at the top of `css/style.css`.
 - Fonts: Bowlby One (titles), Barlow Semi Condensed 500/700 (everything else), self-hosted in `assets/fonts/`. No other fonts, no font CDNs.
 - No third-party requests on page load, with one agreed exception: the GoatCounter script (`gc.zgo.at/count.js`, site `primal-impulse.goatcounter.com`, cookieless) at the end of every page. YouTube/Spotify/SoundCloud embeds are click-to-load. No cookie banner should ever be needed.
-- Brand logos: only on the track cards, where the Spotify and SoundCloud listen links are square icon buttons using each brand's official single-colour mark in white, unaltered (inlined in `js/main.js`). Everywhere else, text links only.
+- Brand logos: allowed only as square icon buttons (`.btn--icon`) using each brand's official single-colour mark in white, unaltered. Used for the Spotify and SoundCloud listen links on track cards (paths in `js/main.js`) and the four social links in the hero and Contact (SVG sprite at the top of `index.html`). Every icon button needs an `aria-label` and a `title`.
 - `assets/mascot.svg` is the official mascot. Do not redraw or recolour it without asking.
 - Only list tracks and events the band has supplied. Never invent tracks, credits, dates, venues or links. Ask when something is missing.
 - Never use the em dash character (U+2014) in code, copy, comments or commit messages.
