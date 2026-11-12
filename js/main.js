@@ -208,7 +208,128 @@
     document.getElementById("events-past-wrap").hidden = past.length === 0;
   }
 
+  /* ---------- Fruit chaos ----------
+     Poke the mascot: it headbangs and throws fruit-coloured bits on the kick.
+     Five quick pokes, or the Konami code, makes it rain mascots.
+     None of this runs for visitors who prefer reduced motion. */
+
+  function initFruitChaos() {
+    var hero = document.querySelector(".hero");
+    var scene = document.querySelector(".hero__scene");
+    var mascot = scene && scene.querySelector(".hero__mascot img");
+    if (!hero || !mascot || !hero.animate || !window.matchMedia) return;
+
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var COLOURS = ["#ffe135", "#ff6e00", "#01b308", "#ffffff"];
+    var SHAPES = ["", " spark--chunk", " spark--wedge"];
+    var BEAT = 400;
+    var pokes = [];
+    var kickTimer = 0;
+    var raining = false;
+
+    function rand(min, max) { return min + Math.random() * (max - min); }
+
+    function burst() {
+      var box = hero.getBoundingClientRect();
+      var m = mascot.getBoundingClientRect();
+      var x = m.left - box.left + m.width / 2;
+      var y = m.top - box.top + m.height * 0.45;
+      var reach = Math.min(box.width, 900) * 0.42;
+
+      for (var i = 0; i < 22; i++) {
+        var bit = el("span", "spark" + SHAPES[i % SHAPES.length]);
+        var size = rand(10, 22);
+        bit.style.width = bit.style.height = size + "px";
+        bit.style.left = x - size / 2 + "px";
+        bit.style.top = y - size / 2 + "px";
+        bit.style.background = COLOURS[i % COLOURS.length];
+        bit.setAttribute("aria-hidden", "true");
+        hero.appendChild(bit);
+
+        var angle = rand(-Math.PI, 0) + rand(-0.4, 0.4);
+        var far = rand(0.45, 1) * reach;
+        var dx = Math.cos(angle) * far;
+        var dy = Math.sin(angle) * far;
+        var spin = rand(-540, 540);
+        var flight = bit.animate([
+          { transform: "translate(0, 0) scale(0.3)", opacity: 1 },
+          { transform: "translate(" + dx * 0.8 + "px, " + dy + "px) rotate(" + spin * 0.6 + "deg) scale(1)", opacity: 1, offset: 0.45 },
+          { opacity: 1, offset: 0.75 },
+          { transform: "translate(" + dx + "px, " + (dy + far * 0.7) + "px) rotate(" + spin + "deg) scale(0.8)", opacity: 0 },
+        ], { duration: rand(2, 3) * BEAT, easing: "cubic-bezier(0.2, 0.7, 0.4, 1)", fill: "forwards" });
+        flight.onfinish = flight.oncancel = (function (node) {
+          return function () { node.remove(); };
+        })(bit);
+      }
+    }
+
+    function kick() {
+      scene.classList.remove("is-kicked");
+      void scene.offsetWidth;               /* restart the headbang */
+      scene.classList.add("is-kicked");
+      clearTimeout(kickTimer);
+      kickTimer = setTimeout(function () { scene.classList.remove("is-kicked"); }, BEAT * 4);
+
+      var title = hero.querySelector(".hero__title");
+      if (title) {
+        title.animate([
+          { transform: "rotate(-3deg) scale(1.07)" },
+          { transform: "rotate(-3deg) scale(1)" },
+        ], { duration: BEAT, easing: "cubic-bezier(0.2, 1.6, 0.4, 1)" });
+      }
+      burst();
+    }
+
+    function rain() {
+      if (raining) return;
+      raining = true;
+      var sky = el("div", "rain");
+      sky.setAttribute("aria-hidden", "true");
+      var longest = 0;
+      for (var i = 0; i < 24; i++) {
+        var fruit = el("img");
+        fruit.src = mascot.getAttribute("src");
+        fruit.alt = "";
+        var width = rand(44, 96);
+        fruit.style.width = width + "px";
+        fruit.style.left = "calc(" + rand(0, 100) + "% - " + width / 2 + "px)";
+        sky.appendChild(fruit);
+        var tilt = rand(-40, 40);
+        var delay = rand(0, 4) * BEAT;
+        var duration = rand(5, 8) * BEAT;
+        longest = Math.max(longest, delay + duration);
+        fruit.animate([
+          { transform: "translateY(-160px) rotate(" + tilt + "deg)" },
+          { transform: "translateY(calc(100vh + 160px)) rotate(" + -tilt + "deg)" },
+        ], { duration: duration, delay: delay, easing: "cubic-bezier(0.4, 0, 0.8, 0.6)", fill: "both" });
+      }
+      document.body.appendChild(sky);
+      setTimeout(function () { sky.remove(); raining = false; }, longest + 100);
+    }
+
+    mascot.addEventListener("click", function () {
+      if (calm.matches) return;
+      kick();
+      var now = Date.now();
+      pokes = pokes.filter(function (t) { return now - t < 2000; });
+      pokes.push(now);
+      if (pokes.length >= 5) { pokes = []; rain(); }
+    });
+
+    var KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+    var step = 0;
+    document.addEventListener("keydown", function (event) {
+      var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+      step = key === KONAMI[step] ? step + 1 : (key === KONAMI[0] ? 1 : 0);
+      if (step === KONAMI.length) {
+        step = 0;
+        if (!calm.matches) { kick(); rain(); }
+      }
+    });
+  }
+
   renderTracks();
   renderSet();
   renderEvents();
+  initFruitChaos();
 })();

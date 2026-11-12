@@ -164,7 +164,7 @@ img { display: block; max-width: 100%; }
   height: 62%;
   width: auto;
   max-width: none;
-  transition: transform var(--beat) cubic-bezier(0.2, 1.4, 0.4, 1);
+  transition: transform calc(var(--beat) * 2) ease-in-out;
 }
 
 .hero__mascot {
@@ -587,17 +587,144 @@ img { display: block; max-width: 100%; }
 .footer p + p { margin-top: 0.75rem; }
 .footer a { font-weight: 700; }
 
+/* ---------- Ticker ---------- */
+
+.ticker { padding: 1.75rem 0; overflow: clip; }
+.ticker__band {
+  display: flex;
+  width: max-content;
+  margin-left: -1rem;
+  padding: 0.55rem 0;
+  background: var(--orange);
+  color: var(--black);
+  font: 400 clamp(1.2rem, 1rem + 1vw, 1.75rem)/1 var(--font-display);
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+  transform-origin: calc(50vw + 1rem) 50%;
+}
+.ticker__group { display: flex; flex: none; }
+.ticker__group span { display: flex; align-items: center; }
+.ticker__group span::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  margin: 0 0.9em;
+  background: var(--white);
+  transform: rotate(45deg);
+}
+
+/* ---------- Fruit chaos (built by js/main.js) ---------- */
+
+.hero__mascot img { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+.hero .spark {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.hero .spark--chunk { border-radius: 0.15rem; }
+.hero .spark--wedge { border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+
+.rain {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  pointer-events: none;
+}
+.rain img { position: absolute; top: 0; height: auto; }
+
 /* ---------- Motion ----------
-   One entrance on load. After that nothing moves unless you poke the mascot,
-   which headbangs at 150 BPM. All of it is off for prefers-reduced-motion. */
+   The hero is where the fruit misbehaves: one entrance on load, a swaying disco ball,
+   slow disco lights, a headbang at 150 BPM on hover and a kick when the mascot is poked.
+   Elsewhere only small hover reactions. Nothing reveals on scroll, nothing flashes.
+   All of it is off for prefers-reduced-motion. */
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero__ball   { animation: ball-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) backwards; }
+  .hero__ball {
+    transform-origin: 46% 0;
+    animation:
+      ball-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) backwards,
+      sway calc(var(--beat) * 10) ease-in-out 0.7s infinite alternate;
+  }
   .hero__mascot { animation: rise 0.7s cubic-bezier(0.2, 1.5, 0.4, 1) 0.15s backwards; }
   .hero .hero__title { animation: slam 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) 0.5s backwards; }
 
-  .hero__scene:hover .hero__mascot img { animation: headbang var(--beat) infinite; }
-  .hero__scene:hover .hero__ball { transform: rotate(24deg) scale(1.06); }
+  /* The mascot always grooves a little (rotate), and nods on top of that (transform)
+     when hovered or kicked. Two separate properties, so one never interrupts the other. */
+  .hero__mascot img { animation: groove calc(var(--beat) * 4) ease-in-out 0.85s infinite alternate; }
+  .hero__scene:hover .hero__mascot img {
+    animation:
+      groove calc(var(--beat) * 4) ease-in-out 0.85s infinite alternate,
+      headbang calc(var(--beat) * 2) ease-in-out infinite;
+  }
+  .hero__scene.is-kicked .hero__mascot img {
+    animation:
+      groove calc(var(--beat) * 4) ease-in-out 0.85s infinite alternate,
+      headbang calc(var(--beat) * 2) ease-in-out 2;
+  }
+  .hero__scene:hover .hero__ball { transform: rotate(10deg) scale(1.04); }
+
+  /* Disco lights: sparse soft dots turning slowly around the mascot */
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 34%;
+    width: clamp(34rem, 120vmax, 96rem);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 8%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 78% 16%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 91% 41%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 86% 70%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 66% 90%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 40% 93%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 16% 78%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 7% 50%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 14% 24%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 31% 11%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 68% 30%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 27% 62%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 74% 58%, rgb(255 225 53 / 0.55) 0 0.18rem, transparent 0.55rem),
+      radial-gradient(circle at 36% 33%, rgb(255 255 255 / 0.45) 0 0.18rem, transparent 0.55rem);
+    animation: lights calc(var(--beat) * 240) linear infinite;
+  }
+
+  .ticker__group { animation: ticker calc(var(--beat) * 70) linear infinite; }
+
+  .nav__brand:hover img { transform-origin: 50% 100%; animation: headbang calc(var(--beat) * 2) ease-in-out infinite; }
+
+  .lost__mascot { animation: dangle calc(var(--beat) * 4) ease-in-out infinite alternate; }
+
+  .event:hover .event__redacted { animation: nope var(--beat); }
+
+  @media (hover: hover) {
+    .track__cover { transition: transform 0.12s, box-shadow 0.12s; }
+    .track:hover .track__cover {
+      transform: translate(-0.2rem, -0.2rem) rotate(-1.5deg);
+      box-shadow: 0.45rem 0.45rem 0 var(--orange);
+    }
+    .set__poster img { transition: transform var(--beat) ease-out; }
+    .set__poster:hover img { transform: scale(1.03); }
+  }
+
+  /* How far down the page you are, drawn along the bottom of the nav */
+  @supports (animation-timeline: scroll()) {
+    .nav::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 3px;
+      background: var(--orange);
+      transform-origin: 0 50%;
+      animation: progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
 }
 
 @keyframes rise     { from { transform: translateY(24%) scale(0.9); opacity: 0; } }
@@ -605,7 +732,17 @@ img { display: block; max-width: 100%; }
 @keyframes slam     { from { transform: rotate(-3deg) scale(1.6); opacity: 0; } }
 @keyframes headbang {
   0%, 100% { transform: none; }
-  18%      { transform: translateY(2%) rotate(-3deg) scaleY(0.96); }
+  50%      { transform: translateY(1.5%) rotate(-2.5deg) scaleY(0.975); }
+}
+@keyframes groove   { from { rotate: -1.5deg; } to { rotate: 1.5deg; } }
+@keyframes sway     { from { rotate: -4deg; } to { rotate: 4deg; } }
+@keyframes lights   { to { rotate: 360deg; } }
+@keyframes ticker   { to { transform: translateX(-100%); } }
+@keyframes dangle   { from { rotate: -7deg; } to { rotate: 7deg; } }
+@keyframes progress { from { transform: scaleX(0); } }
+@keyframes nope {
+  25%, 75% { transform: translateX(-0.2rem); }
+  50%      { transform: translateX(0.2rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
