@@ -15,7 +15,7 @@ Read `index.html`, `css/style.css` and `README.md` before changing anything. The
 - Only list tracks and events the band has supplied. Never invent tracks, credits, dates, venues or links. Ask when something is missing.
 - Never use the em dash character (U+2014) in code, copy, comments or commit messages.
 - Accessibility floor: visible keyboard focus, real alt text, `prefers-reduced-motion` respected, works at 375px wide.
-- Motion (`--beat: 0.4s`, 150 BPM, all timings are multiples of it): the hero has one entrance on load, a swaying disco ball, slow disco lights, a mascot that grooves gently all the time and nods smoothly on hover (one nod every two beats, eased, never snappy), and a kick (headbang plus a burst of palette-coloured bits) when the mascot is clicked or tapped. Five quick pokes or the Konami code rains mascots. Outside the hero: the genre ticker under it, a scroll progress line on the nav, and small hover reactions only (track covers, set poster, nav mascot, classified bar, 404 mascot). No scroll-reveal animations, nothing that flashes or strobes, and everything is off for `prefers-reduced-motion`.
+- Motion (`--beat: 0.4s`, 150 BPM, all timings are multiples of it): the hero has one entrance on load, a swaying disco ball, slow disco lights, a mascot that grooves gently all the time and nods smoothly on hover (one nod every two beats, eased, never snappy), and a kick (headbang plus a burst of palette-coloured bits) when the mascot is clicked or tapped. Five quick pokes or the Konami code rains mascots. Outside the hero: the genre ticker under it, a scroll progress line on the nav, and small hover reactions only (track covers, set poster, nav mascot, the mascots guarding secret events, 404 mascot). No scroll-reveal animations, nothing that flashes or strobes, and everything is off for `prefers-reduced-motion`.
 - Design principle: a clean dark stage where the fruit misbehaves. The hero is the one chaos moment; other sections stay quiet and disciplined. No uppercase eyebrow labels, no monospace data labels, no arrows on buttons.
 - Cache busting: `css/style.css`, `js/data.js` and `js/main.js` are linked with `?v=N`. Bump N in all three HTML files whenever one of them changes, or returning visitors can get new HTML with an old cached file.
 - Safari: SVG files used in `<img>` must keep `width` and `height` on the root element, and never size a child with `height: 100%` inside an `aspect-ratio` box.
@@ -36,7 +36,7 @@ window.PI = {
   ],
   set: { title: "", youtube: "VIDEO_ID", poster: "assets/sets/x.webp" },   // the one featured set
   events: [
-    { date: "2026-12-04", name: null },       // null name renders as a secret/classified row
+    { date: "2026-12-04", name: null },       // null name renders as a secret row: mascots and padlocks hiding the name
     { date: "", name: "", venue: "", map: "" }, // venue and map link are optional
   ],
 };

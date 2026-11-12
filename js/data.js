@@ -78,6 +78,10 @@ window.PI = {
   },
 
   events: [
+    { date: "2026-05-23", name: "Bass in the Parking", venue: "Barcelona, Spain" },
+    { date: "2026-07-18", name: "Pólvora Hardcore", venue: "Barcelona, Spain" },
+    { date: "2026-08-15", name: "Pólvora Hardcore", venue: "Barcelona, Spain" },
+    { date: "2026-10-03", name: "Hardstyle Takeover", venue: "Barcelona, Spain" },
     { date: "2026-12-04", name: null },
     {
       date: "2027-01-05",

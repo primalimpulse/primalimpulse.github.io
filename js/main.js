@@ -134,8 +134,6 @@
 
   /* ---------- Events ---------- */
 
-  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
   /* Today's date in Barcelona as "YYYY-MM-DD", wherever the visitor is */
   function todayInMadrid() {
     var parts = {};
@@ -153,9 +151,8 @@
 
     var time = el("time", "event__date");
     time.dateTime = event.date;
-    time.appendChild(el("span", "event__day", String(Number(bits[2]))));
-    time.appendChild(document.createTextNode(" "));
-    time.appendChild(el("span", "event__month", MONTHS[Number(bits[1]) - 1] + " " + bits[0]));
+    /* Shown as DD/MM/YYYY; the data stays ISO so sorting keeps working */
+    time.textContent = bits[2] + "/" + bits[1] + "/" + bits[0];
     li.appendChild(time);
 
     var info = el("div", "event__info");
@@ -176,11 +173,19 @@
         info.appendChild(venue);
       }
     } else {
+      /* Secret show: mascots and padlocks, alternating, stand in front of the name */
       var name = el("p", "event__name event__name--secret");
-      var bar = el("span", "event__redacted");
-      bar.setAttribute("aria-hidden", "true");
-      name.appendChild(bar);
-      name.appendChild(document.createTextNode("Classified"));
+      name.setAttribute("role", "img");
+      name.setAttribute("aria-label", "Secret show: the name is hidden behind mascots and padlocks");
+      for (var i = 0; i < 5; i++) {
+        var isLock = i % 2 === 1;
+        var guard = el("img", isLock ? "event__lock" : "event__guard");
+        guard.src = isLock ? "assets/lock.svg" : "assets/mascot.svg";
+        guard.alt = "";
+        guard.width = isLock ? 48 : 713;
+        guard.height = isLock ? 60 : 972;
+        name.appendChild(guard);
+      }
       info.appendChild(name);
       info.appendChild(el("p", "event__note", "Venue confirmed, not disclosed."));
     }

@@ -426,20 +426,20 @@ img { display: block; max-width: 100%; }
 
 .event {
   display: grid;
-  grid-template-columns: 9.5rem 1fr;
+  grid-template-columns: 8rem 1fr;
   gap: 1rem;
   align-items: center;
   padding: 1.1rem 0;
   border-top: 2px solid rgb(255 255 255 / 0.16);
 }
 
-.event__date { display: flex; align-items: baseline; gap: 0.5rem; }
-.event__day {
-  min-width: 1.3em;
+.event__date {
   color: var(--orange);
-  font: 400 2.2rem/1 var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.event__month { font-weight: 700; white-space: nowrap; }
 
 .event__name {
   margin: 0;
@@ -447,13 +447,9 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
-.event__name--secret { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.7rem; color: var(--yellow); }
-.event__redacted {
-  width: 6.5rem;
-  height: 1.1em;
-  border-radius: 0.15rem;
-  background: var(--white);
-}
+.event__name--secret { display: flex; align-items: center; gap: 0.5rem; }
+.event__guard { width: auto; height: 2.6rem; transform-origin: 50% 100%; }
+.event__lock { width: auto; height: 1.6rem; }
 .event__note { margin: 0.25rem 0 0; color: rgb(255 255 255 / 0.72); font-size: 1.05rem; }
 .event__note a {
   display: inline-block;
@@ -473,16 +469,18 @@ img { display: block; max-width: 100%; }
 }
 .events--past { margin-top: 1rem; }
 .events--past .event { padding: 0.8rem 0; }
-.events--past .event__day { color: rgb(255 255 255 / 0.72); font-size: 1.5rem; }
-.events--past .event__month,
+.events--past .event__date { font-size: 1.15rem; }
+.events--past .event__date,
 .events--past .event__name { color: rgb(255 255 255 / 0.72); }
 .events--past .event__name { font-size: 1.05rem; }
-.events--past .event__redacted { background: rgb(255 255 255 / 0.5); }
+.events--past .event__name--secret img { opacity: 0.6; }
+.events--past .event__guard { height: 2rem; }
+.events--past .event__lock { height: 1.25rem; }
 
 @media (max-width: 40rem) {
-  .event { grid-template-columns: 4.75rem 1fr; }
-  .event__date { flex-direction: column; gap: 0.15rem; }
-  .event__month { font-size: 1rem; }
+  .event { grid-template-columns: 6rem 1fr; }
+  .event__date,
+  .events--past .event__date { font-size: 1.1rem; }
 }
 
 /* ---------- About ---------- */
@@ -700,7 +698,9 @@ img { display: block; max-width: 100%; }
 
   .lost__mascot { animation: dangle calc(var(--beat) * 4) ease-in-out infinite alternate; }
 
-  .event:hover .event__redacted { animation: nope var(--beat); }
+  /* The mascots guarding a secret show nod, the middle one a beat behind; the locks stay put */
+  .event:hover .event__guard { animation: nod calc(var(--beat) * 2) ease-in-out infinite; }
+  .event:hover .event__guard:nth-child(3) { animation-delay: var(--beat); }
 
   @media (hover: hover) {
     .track__cover { transition: transform 0.12s, box-shadow 0.12s; }
@@ -740,9 +740,9 @@ img { display: block; max-width: 100%; }
 @keyframes ticker   { to { transform: translateX(-100%); } }
 @keyframes dangle   { from { rotate: -7deg; } to { rotate: 7deg; } }
 @keyframes progress { from { transform: scaleX(0); } }
-@keyframes nope {
-  25%, 75% { transform: translateX(-0.2rem); }
-  50%      { transform: translateX(0.2rem); }
+@keyframes nod {
+  0%, 100% { transform: none; }
+  50%      { transform: translateY(4%) rotate(-6deg) scaleY(0.95); }
 }
 
 @media (prefers-reduced-motion: reduce) {
