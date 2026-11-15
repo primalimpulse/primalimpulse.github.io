@@ -426,7 +426,7 @@ img { display: block; max-width: 100%; }
 
 .event {
   display: grid;
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 8rem 1fr auto;
   gap: 1rem;
   align-items: center;
   padding: 1.1rem 0;
@@ -460,6 +460,8 @@ img { display: block; max-width: 100%; }
 }
 .event__note a:hover { color: var(--yellow); }
 
+.event__tickets { justify-self: end; }
+
 .events__empty { max-width: 38rem; margin: clamp(1.75rem, 4vw, 2.75rem) 0 0; }
 
 .events__past-title {
@@ -479,6 +481,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 40rem) {
   .event { grid-template-columns: 6rem 1fr; }
+  .event__tickets { grid-column: 2; justify-self: start; margin-top: -0.35rem; }
   .event__date,
   .events--past .event__date { font-size: 1.1rem; }
 }

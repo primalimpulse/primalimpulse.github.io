@@ -37,7 +37,7 @@ window.PI = {
   set: { title: "", youtube: "VIDEO_ID", poster: "assets/sets/x.webp" },   // the one featured set
   events: [
     { date: "2026-12-04", name: null },       // null name renders as a secret row: mascots and padlocks hiding the name
-    { date: "", name: "", venue: "", map: "" }, // venue and map link are optional
+    { date: "", name: "", venue: "", map: "", tickets: "" }, // venue, map link and tickets link are optional
   ],
 };
 ```
@@ -45,7 +45,7 @@ window.PI = {
 - Track card: square cover, title, Original or "Remix of X" tag, a square icon button for each listen link that exists, Download button hidden while `download` is empty.
 - Covers: WebP, about 600px square, lazy-loaded, in `assets/covers/`.
 - Set: one featured YouTube video. Poster is a self-hosted 16:9 WebP in `assets/sets/`; the youtube-nocookie iframe is only created when play is pressed.
-- Events: ISO dates. "Today" is computed in Europe/Madrid. An event stays upcoming through its whole day, then moves to "Past shows" automatically. Upcoming sorted ascending, past descending. Empty upcoming list shows a prompt to book us. No ticket links.
+- Events: ISO dates. "Today" is computed in Europe/Madrid. An event stays upcoming through its whole day, then moves to "Past shows" automatically. Upcoming sorted ascending, past descending. Empty upcoming list shows a prompt to book us. An upcoming event with a `tickets` URL shows a Tickets button (`.btn--small.btn--primary`, opens in a new tab); it is never shown on past shows or without a supplied link.
 - Downloads are GitHub Release assets in `primalimpulse/primal-impulse-downloads` (release tag `tracks`, files named `Primal-Impulse-Title-Mix.flac`). The site only stores URLs. To add one: `gh release upload tracks FILE --repo primalimpulse/primal-impulse-downloads`, then set `download` in `js/data.js`.
 - A `<noscript>` fallback points to the social links.
 

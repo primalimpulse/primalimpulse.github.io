@@ -18,8 +18,12 @@
    Events
      date       "YYYY-MM-DD"
      name        event name, or null for a show that cannot be announced yet
+                 (a null name can still have a venue and map; without a venue
+                 the row says the venue is not disclosed)
      venue       optional: venue name and city, shown under the event name
      map         optional: map link for the venue; turns the venue into a link
+     tickets     optional: link to buy tickets; shows a Tickets button until the
+                 show is over. Leave it out when there is no link yet
    Past events move to "Past shows" on their own the day after. */
 
 window.PI = {
@@ -78,17 +82,24 @@ window.PI = {
   },
 
   events: [
-    { date: "2026-05-23", name: "Bass in the Parking", venue: "Barcelona, Spain" },
-    { date: "2026-07-18", name: "Pólvora Hardcore", venue: "Barcelona, Spain" },
-    { date: "2026-08-15", name: "Pólvora Hardcore", venue: "Barcelona, Spain" },
-    { date: "2026-10-03", name: "Hardstyle Takeover", venue: "Barcelona, Spain" },
+    { date: "2026-05-23", name: "Bass in the Parking", venue: "Montmeló, Spain" },
+    { date: "2026-07-18", name: "Pólvora Hardcore", venue: "Terminal Zero, Barcelona, Spain" },
+    { date: "2026-08-15", name: "Pólvora Hardcore", venue: "Born2B, Barcelona, Spain" },
+    { date: "2026-10-03", name: "Hardstyle Takeover", venue: "D9 Aribau, Barcelona, Spain" },
     { date: "2026-12-04", name: null },
     {
       date: "2027-01-05",
       name: "Hardstyle Takeover",
       venue: "9D9, Barcelona, Spain",
       map: "https://maps.app.goo.gl/LgERadMEQQeJFj8o6",
+      tickets: "https://site.fourvenues.com/en/primal-impulse/events/hardstyle-takeover-05-01-2027-X121",
     },
-    { date: "2027-01-09", name: null },
+    {
+      date: "2027-01-09",
+      name: "La Primera Batalla",
+      venue: "Sala Vols, Tarragona",
+      map: "https://maps.app.goo.gl/1uh84EqtmUTWtEyz9",
+      tickets: "https://site.fourvenues.com/es/la-primera-2/events/la-primera-09-01-2027-CLE4",
+    },
   ],
 };

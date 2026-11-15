@@ -145,7 +145,7 @@
     return parts.year + "-" + parts.month + "-" + parts.day;
   }
 
-  function eventRow(event) {
+  function eventRow(event, isUpcoming) {
     var bits = event.date.split("-");
     var li = el("li", "event");
 
@@ -158,20 +158,6 @@
     var info = el("div", "event__info");
     if (event.name) {
       info.appendChild(el("p", "event__name", event.name));
-      if (event.venue) {
-        var venue = el("p", "event__note");
-        if (event.map) {
-          var map = el("a", null, event.venue);
-          map.href = event.map;
-          map.target = "_blank";
-          map.rel = "noopener";
-          map.setAttribute("aria-label", event.venue + ", open in maps");
-          venue.appendChild(map);
-        } else {
-          venue.textContent = event.venue;
-        }
-        info.appendChild(venue);
-      }
     } else {
       /* Secret show: mascots and padlocks, alternating, stand in front of the name */
       var name = el("p", "event__name event__name--secret");
@@ -187,9 +173,35 @@
         name.appendChild(guard);
       }
       info.appendChild(name);
+    }
+    /* A secret show can still disclose its venue; without one it gets the stock note */
+    if (event.venue) {
+      var venue = el("p", "event__note");
+      if (event.map) {
+        var map = el("a", null, event.venue);
+        map.href = event.map;
+        map.target = "_blank";
+        map.rel = "noopener";
+        map.setAttribute("aria-label", event.venue + ", open in maps");
+        venue.appendChild(map);
+      } else {
+        venue.textContent = event.venue;
+      }
+      info.appendChild(venue);
+    } else if (!event.name) {
       info.appendChild(el("p", "event__note", "Venue confirmed, not disclosed."));
     }
     li.appendChild(info);
+
+    /* Tickets: upcoming shows only, and only when the band has supplied a link */
+    if (isUpcoming && event.tickets) {
+      var tickets = linkButton("Tickets", event.tickets,
+        "Tickets for " + (event.name || "the secret show") + " on " + time.textContent,
+        "btn--primary event__tickets");
+      tickets.target = "_blank";
+      tickets.rel = "noopener";
+      li.appendChild(tickets);
+    }
     return li;
   }
 
@@ -205,8 +217,8 @@
     var upcoming = data.events.filter(function (e) { return e.date >= today; }).sort(byDate);
     var past = data.events.filter(function (e) { return e.date < today; }).sort(byDate).reverse();
 
-    upcoming.forEach(function (e) { upcomingList.appendChild(eventRow(e)); });
-    past.forEach(function (e) { pastList.appendChild(eventRow(e)); });
+    upcoming.forEach(function (e) { upcomingList.appendChild(eventRow(e, true)); });
+    past.forEach(function (e) { pastList.appendChild(eventRow(e, false)); });
 
     upcomingList.hidden = upcoming.length === 0;
     document.getElementById("events-empty").hidden = upcoming.length > 0;
