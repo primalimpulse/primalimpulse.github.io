@@ -86,7 +86,6 @@ window.PI = {
     { date: "2026-07-18", name: "Pólvora Hardcore", venue: "Terminal Zero, Barcelona, Spain" },
     { date: "2026-08-15", name: "Pólvora Hardcore", venue: "Born2B, Barcelona, Spain" },
     { date: "2026-10-03", name: "Hardstyle Takeover", venue: "D9 Aribau, Barcelona, Spain" },
-    { date: "2026-12-04", name: null },
     {
       date: "2027-01-05",
       name: "Hardstyle Takeover",
