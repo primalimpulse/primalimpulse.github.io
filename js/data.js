@@ -73,6 +73,15 @@ window.PI = {
       soundcloud: "https://soundcloud.com/primalimpulsedj/toto_de_loca",
       download: "https://github.com/primalimpulse/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-TOTO-DE-LOCA-Uptempo-Remix-Extended-Mix.flac",
     },
+    {
+      title: "Colors",
+      type: "remix",
+      of: "",
+      cover: "assets/covers/colors.webp",
+      spotify: "",
+      soundcloud: "https://soundcloud.com/primalimpulsedj/colors",
+      download: "https://github.com/primalimpulse/primal-impulse-downloads/releases/download/tracks/Primal-Impulse-Colors-Extended-Kick-Edit.flac",
+    },
   ],
 
   set: {
